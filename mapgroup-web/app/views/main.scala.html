@@ -1,0 +1,48 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <p>Map Group WebApp - Agrupamento por Características
+        <table style="width:100%">
+        <tr>
+          <td>[#]</td>
+          <td>[ID GROUP]</td>
+          <td>[DATA DO AGRUPAMENTO]</td>
+          <td>[QUANTIDADE DE CLIENTES]</td>
+          <td>[PERCENTUAL DO TOTAL]</td>
+          <td>[CARACTERISTICAS]</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>GR001</td>
+          <td>04/07/2016 17:00:00</td>
+          <td>121</td>
+          <td>12.1%</td>
+          <td>sexo:M|UF:SP</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>GR002</td>
+          <td>05/07/2016 17:00:00</td>
+          <td>212</td>
+          <td>21.2%</td>
+          <td>sexo:M|UF:MG</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>GR003</td>
+          <td>06/07/2016 17:00:00</td>
+          <td>37</td>
+          <td>3.7%</td>
+          <td>idade:12|sexo:M|UF:SP</td>
+        </tr>
+      </table>
+    </body>
+</html>
