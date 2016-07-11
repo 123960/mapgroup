@@ -1,14 +1,13 @@
-package source
+package actors
 
 import akka.actor._
 import com.github.nscala_time.time.Imports._
 
 import model._
+import controllers._
 
 object SourceActor {
-
   def props = Props[SourceActor]
-
 }
 
 class SourceActor extends Actor {

@@ -3,7 +3,11 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET     /                           controllers.HomeController.main
+# Add a group to page
+GET     /addGroup                   controllers.HomeController.addGroup
+# Add a group to page
+GET     /wsGroup                    controllers.HomeController.wsGroup
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code

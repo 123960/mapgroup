@@ -1,10 +1,4 @@
-2016-07-06 15:58:02,794 [INFO] from play.core.server.NettyServer in pool-4-thread-5 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
-2016-07-06 15:58:55,445 [INFO] from application in ForkJoinPool-1-worker-1 - ApplicationTimer demo: Starting application at 2016-07-06T18:58:55.412Z.
-2016-07-06 15:58:55,847 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
-2016-07-06 16:02:57,127 [INFO] from application in application-akka.actor.default-dispatcher-5 - ApplicationTimer demo: Stopping application at 2016-07-06T19:02:57.127Z after 242s.
-2016-07-06 16:02:57,348 [INFO] from application in application-akka.actor.default-dispatcher-5 - ApplicationTimer demo: Starting application at 2016-07-06T19:02:57.346Z.
-2016-07-06 16:02:57,454 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-5 - Application started (Dev)
-2016-07-06 16:03:25,018 [INFO] from application in application-akka.actor.default-dispatcher-4 - ApplicationTimer demo: Stopping application at 2016-07-06T19:03:25.018Z after 28s.
-2016-07-06 16:03:25,161 [INFO] from application in application-akka.actor.default-dispatcher-4 - ApplicationTimer demo: Starting application at 2016-07-06T19:03:25.160Z.
-2016-07-06 16:03:25,276 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-4 - Application started (Dev)
-2016-07-06 17:47:23,183 [INFO] from application in pool-4-thread-5 - ApplicationTimer demo: Stopping application at 2016-07-06T20:47:23.183Z after 6238s.
+2016-07-11 13:03:58,216 [INFO] from play.core.server.NettyServer in pool-4-thread-4 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2016-07-11 13:04:02,060 [INFO] from application in ForkJoinPool-1-worker-1 - ApplicationTimer demo: Starting application at 2016-07-11T16:04:02.053Z.
+2016-07-11 13:04:02,372 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
+2016-07-11 14:05:46,409 [INFO] from application in pool-4-thread-4 - ApplicationTimer demo: Stopping application at 2016-07-11T17:05:46.409Z after 3704s.

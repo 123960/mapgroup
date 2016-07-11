@@ -7,4 +7,4 @@ abstract class Group
 case class CharacGroup (val id: String,
                         val groupDate: DateTime,
                         val elements: List[String],
-                        val groupAffinity: List[String]) extends Group
+                        val affinities: List[String]) extends Group
