@@ -1,0 +1,9 @@
+export JAVA_HOME=/opt/ngin/cliosv2_10/yarn/jdk1.8.0_60
+export SCALA_HOME=/opt/ngin/cliosv2_10/yarn/scala-2.11.7
+export HADOOP_HOME=/opt/ngin/cliosv2_10/yarn/hadoop-2.7.1
+export SPARK_HOME=/opt/ngin/cliosv2_10/yarn/spark-1.5.2-bin-hadoop2.6
+export PATH=$JAVA_HOME/bin:$SCALA_HOME/bin:$PATH
+
+--export HADOOP_OPTS=-Djava.net.preferIPv4Stack=true
+
+./mongod --dbpath ../data/db/
