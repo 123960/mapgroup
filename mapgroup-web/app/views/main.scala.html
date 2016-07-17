@@ -1,6 +1,4 @@
-@import model._
 @import helper._
-@(groups: List[CharacGroup])
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +25,7 @@
                 var qtd       = document.createElement("td");
                 qtd.appendChild(document.createTextNode(group.elements.length));
                 var perc      = document.createElement("td");
-                perc.appendChild(document.createTextNode("12.1%"));
+                perc.appendChild(document.createTextNode(group.percent));
                 var charac    = document.createElement("td");
                 charac.appendChild(document.createTextNode(group.affinities));
                 var newLine    = document.createElement("tr");
@@ -56,16 +54,6 @@
           <td>[PERCENTUAL DO TOTAL]</td>
           <td>[CARACTERISTICAS]</td>
         </tr>
-        @for(g <- groups) {
-          <tr>
-            <td>1</td>
-            <td>@g.id</td>
-            <td>@g.groupDate</td>
-            <td>@g.elements.length</td>
-            <td>12.1%</td>
-            <td>@g.affinities.mkString("|")</td>
-          </tr>
-        }
       </table>
     </body>
 </html>

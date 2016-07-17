@@ -1,26 +1,16 @@
 package actors
 
 import akka.actor._
-import model._
-import play.api.libs.json._
 
 object WebSocketActor {
-  def props(out: ActorRef, sourceActor: ActorRef) = Props(new WebSocketActor(out, sourceActor))
+  def props(out: ActorRef, sourceActor: ActorSelection) = Props(new WebSocketActor(out, sourceActor))
 }
 
-class WebSocketActor(out: ActorRef, sourceActor: ActorRef) extends Actor {
-
-  implicit val characGroupWrites = new Writes[CharacGroup] {
-    def writes(characGroup: CharacGroup) = Json.obj(
-      "id"         -> characGroup.id,
-      "groupDate"  -> characGroup.groupDate,
-      "elements"   -> characGroup.elements,
-      "affinities" -> characGroup.affinities
-    )
-  }
+class WebSocketActor(out: ActorRef, sourceActor: ActorSelection) extends Actor {
 
   def receive = {
-    case "CharacGroup"      => sourceActor ! "CharacGroup"
-    case group: CharacGroup => out ! (Json.toJson(group).toString)
+    case "CharacGroup" => sourceActor ! "CharacGroup"
+    case x             => out ! x
   }
+
 }
