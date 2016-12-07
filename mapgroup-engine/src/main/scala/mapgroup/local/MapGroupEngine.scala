@@ -14,6 +14,8 @@ import mapgroup.model._
 
 object MapGroupEngine {
 
+  val df = new java.text.DecimalFormat("#.##");
+
   lazy val configFile  = getClass.getClassLoader.getResource("application.conf").getFile
   lazy val config      = ConfigFactory.parseFile(new java.io.File(configFile))
   lazy val system      = ActorSystem("MapGroupSystem", config)
@@ -34,7 +36,7 @@ object MapGroupEngine {
     CharacGroup(id         = System.currentTimeMillis().toString,
                 groupDate  = new DateTime(),
                 elements   = es.map(e => e.id),
-                percent    = s"${((es.length / elements.length) * 100)}%",
+                percent    = s"${df.format(((es.length * 1.0) / elements.length) * 100)}%",
                 affinities = cs.map(t => t._1 + "::" + t._2).toList)
 
   /*
@@ -43,8 +45,9 @@ object MapGroupEngine {
    */
   def elementAffinityByCharacValue(es: List[Element]): (Set[(String, String)], List[Element]) = {
     val x = elementAffinityByCharacExists(es)
-    val s = x._1.flatMap(c => x._2.groupBy(e => (c, e.characs(c))))
-                .filter(y => x._2.forall(e2 => y._2.contains(e2)))
+    val keyCharac = x._1.head //Choose one characteristics to be a "key"
+    val s  = x._1.flatMap(c => x._2.groupBy(e => (c, e.characs(c)))) //Group client-ids by charac-id and charac-value
+                //.filter(y => x._2.forall(e2 => y._2.contains(e2)))
     if (s.length > 0)
      (s.flatten(s2 => Set(s2._1)), s.head._2)
     else
@@ -58,7 +61,9 @@ object MapGroupEngine {
   def elementAffinityByCharacExists(es: List[Element]): (Set[String], List[Element]) = {
     val characCustomerMap = characIndexes(es) //Create a map of customer-id indexed by characs
     val randomCharacs     = sortition(characCustomerMap.keySet) //Sortition of random characs
+    println(s"[MapGroupEngine.elementAffinityByCharacExists] - Looking for clients with these characteristics:  ${randomCharacs.toString}")
     val affinityElements  = es.filter(e => randomCharacs.forall(c => e.characs.contains(c))) //All elements with all random characs
+    println(s"[MapGroupEngine.elementAffinityByCharacExists] - Found ${affinityElements.length} elements!")
     (randomCharacs, affinityElements)
   }
 
@@ -69,10 +74,10 @@ object MapGroupEngine {
     Random.shuffle(l).take(Random.nextInt(l.length))
 
   /*
-   * Creates a map of customer-id indexed by characs
+   * Creates a map of customer-ids indexed by characs
    */
   def characIndexes(es: List[Element]): Map[String, List[String]] =
-    es.foldLeft(Map[String, List[String]]())((acc, e) => acc |+| e.characIndex)
+    es.foldLeft(Map[String, List[String]]())((acc, e) => acc |+| e.characIndexCaracteristicasUnicas)
 
   /*
    * Transforms a string list in the format number;customer-id;characs in a element list

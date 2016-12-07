@@ -10,6 +10,11 @@ class Element(val id: String,
     characs.foldLeft(Map[String, List[String]]())((acc, c) => acc |+| Map(c._1 -> List(id)))
   }
 
+  lazy val characIndexCaracteristicasUnicas: Map[String, List[String]] = {
+    characs.filter(c => !(c._1.contains("Activation") || c._1.contains("Date") || c._1.contains("MDN") || c._1.contains("Account")))
+           .foldLeft(Map[String, List[String]]())((acc, c) => acc |+| Map(c._1 -> List(id)))
+  }
+
   override def toString(): String = id
 
 }
