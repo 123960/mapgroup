@@ -32,7 +32,7 @@ object MapGroupEngine {
     characGroup(x._2, x._1)
   }
 
-  def characGroup(es: List[Element], cs: Set[(String, String)]): CharacGroup =
+  def characGroup(es: Set[Element], cs: Set[(String, String)]): CharacGroup =
     CharacGroup(id         = System.currentTimeMillis().toString,
                 groupDate  = new DateTime(),
                 elements   = es.map(e => e.id),
@@ -43,15 +43,19 @@ object MapGroupEngine {
    * Returns a tuple of characs and elements that contains characs
    * characs are given away
    */
-  def elementAffinityByCharacValue(es: List[Element]): (Set[(String, String)], List[Element]) = {
+  def elementAffinityByCharacValue(es: List[Element]): (Set[(String, String)], Set[Element]) = {
     val x = elementAffinityByCharacExists(es)
-    val keyCharac = x._1.head //Choose one characteristics to be a "key"
-    val s  = x._1.flatMap(c => x._2.groupBy(e => (c, e.characs(c)))) //Group client-ids by charac-id and charac-value
-                //.filter(y => x._2.forall(e2 => y._2.contains(e2)))
+    val s  = x._1.flatMap(c => x._2.map(e => (e, (c, e.characs(c))) )) //Group with this form (client_id, (charact_id, charac_value))
+                 .groupBy(e => e._1)                                   //Group all characs to this form client_id -> Set((client_id, (charact_id, charac_value)))
+                 .mapValues(v => v.map(v2 => v2._2))                   //Transforms client_id -> Set((client_id, (charact_id, charac_value))) into client_id -> Set((charact_id, charac_value))
+                 .groupBy(v => v._2)                                   //Group all client_id for characs Set(((charact_id, charac_value), ...)) -> List(client_id -> Set((charact_id, charac_value)))
+                 .mapValues(v => v.keySet)                             //Transforms Set(((charact_id, charac_value), ...)) -> List(client_id -> Set((charact_id, charac_value))) into Set(((charact_id, charac_value), ...)) -> List(client_id))
+    println(s.head)
+    println("[MapGroupEngine.elementAffinityByCharacValue] - Groups formed:" + s.length)
     if (s.length > 0)
-     (s.flatten(s2 => Set(s2._1)), s.head._2)
+      s.head
     else
-     (Set.empty, List.empty)
+      (Set.empty, Set.empty)
   }
 
   /*

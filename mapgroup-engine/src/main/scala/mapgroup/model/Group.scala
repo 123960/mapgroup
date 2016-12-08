@@ -6,7 +6,7 @@ abstract class Group
 
 case class CharacGroup (val id:         String,
                         val groupDate:  DateTime,
-                        val elements:   List[String],
+                        val elements:   Set[String],
                         val percent:    String,
                         val affinities: List[String]) extends Group {
 

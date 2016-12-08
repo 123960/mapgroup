@@ -1,8 +1,4 @@
-2016-12-07 09:52:32,245 [INFO] from play.core.server.NettyServer in pool-10-thread-2 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
-2016-12-07 09:52:38,376 [INFO] from application in ForkJoinPool-2-worker-1 - ApplicationTimer demo: Starting application at 2016-12-07T11:52:38.375Z.
-2016-12-07 09:52:39,031 [INFO] from play.api.Play in ForkJoinPool-2-worker-1 - Application started (Dev)
-2016-12-07 09:54:01,891 [ERROR] from akka.remote.EndpointWriter in application-akka.actor.default-dispatcher-4 - AssociationError [akka.tcp://application@172.22.28.164:2552] -> [akka.tcp://MapGroupSystem@127.0.0.1:2552]: Error [Shut down address: akka.tcp://MapGroupSystem@127.0.0.1:2552] [
-akka.remote.ShutDownAssociation: Shut down address: akka.tcp://MapGroupSystem@127.0.0.1:2552
-Caused by: akka.remote.transport.Transport$InvalidAssociationException: The remote system terminated the association because it is shutting down.
-]
-2016-12-07 09:54:11,373 [INFO] from application in pool-10-thread-2 - ApplicationTimer demo: Stopping application at 2016-12-07T11:54:11.373Z after 93s.
+2016-12-08 14:50:23,017 [INFO] from play.core.server.NettyServer in pool-34-thread-1 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2016-12-08 14:50:37,717 [INFO] from application in ForkJoinPool-6-worker-1 - ApplicationTimer demo: Starting application at 2016-12-08T16:50:37.716Z.
+2016-12-08 14:50:38,297 [INFO] from play.api.Play in ForkJoinPool-6-worker-1 - Application started (Dev)
+2016-12-08 14:51:33,817 [INFO] from application in pool-34-thread-1 - ApplicationTimer demo: Stopping application at 2016-12-08T16:51:33.817Z after 56s.
