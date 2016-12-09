@@ -50,10 +50,9 @@ object MapGroupEngine {
                  .mapValues(v => v.map(v2 => v2._2))                   //Transforms client_id -> Set((client_id, (charact_id, charac_value))) into client_id -> Set((charact_id, charac_value))
                  .groupBy(v => v._2)                                   //Group all client_id for characs Set(((charact_id, charac_value), ...)) -> List(client_id -> Set((charact_id, charac_value)))
                  .mapValues(v => v.keySet)                             //Transforms Set(((charact_id, charac_value), ...)) -> List(client_id -> Set((charact_id, charac_value))) into Set(((charact_id, charac_value), ...)) -> List(client_id))
-    println(s.head)
     println("[MapGroupEngine.elementAffinityByCharacValue] - Groups formed:" + s.length)
     if (s.length > 0)
-      s.head
+      Random.shuffle(s.filter(t => t._2.length > 10)).head
     else
       (Set.empty, Set.empty)
   }
