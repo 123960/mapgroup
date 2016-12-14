@@ -12,7 +12,7 @@
         <script type="text/javascript" charset="utf-8">
             var wsGroup = new WebSocket("ws://localhost:9000/wsGroup");
             wsGroup.onopen = function(){
-              console.log("connection stablished!!");
+              console.log("Connection stablished with MapGroupSystem!!");
             }
             wsGroup.onmessage = function(jsonGroup) {
                 var group = JSON.parse(jsonGroup.data);
@@ -29,12 +29,22 @@
                 var charac    = document.createElement("td");
                 charac.appendChild(document.createTextNode(group.affinities));
                 var newLine    = document.createElement("tr");
+                var exportButton = document.createElement("button");
+                exportButton.appendChild(document.createTextNode('EXPORT GROUP'));
+                exportButton.onclick = function() {
+                  var a = document.createElement('a');
+                  var blob = new Blob([group.elements], {'type':'application/octet-stream'});
+                  a.href = window.URL.createObjectURL(blob);
+                  a.download = 'export-group-' + group.id + '.txt';
+                  a.click();
+                }
                 newLine.appendChild(nr);
                 newLine.appendChild(id);
                 newLine.appendChild(date);
                 newLine.appendChild(qtd);
                 newLine.appendChild(perc);
                 newLine.appendChild(charac);
+                newLine.appendChild(exportButton);
                 var tableGroups = document.getElementById("table-groups");
                 tableGroups.appendChild(newLine);
             };
